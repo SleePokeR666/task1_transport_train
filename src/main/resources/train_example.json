@@ -1,0 +1,110 @@
+[
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 16,
+	  "comfort": "SEATING",
+	  "name": "Сидячий вагон",
+	  "maxCapacity": 62
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 20,
+	  "comfort": "COUPE",
+	  "name": "Купированный вагон",
+	  "maxCapacity": 36
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 19,
+	  "comfort": "COUPE",
+	  "name": "Купированный вагон",
+	  "maxCapacity": 36
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 17,
+	  "comfort": "SLEEPING",
+	  "name": "Спальный вагон",
+	  "maxCapacity": 18
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 17,
+	  "comfort": "COUPE",
+	  "name": "Купированный вагон",
+	  "maxCapacity": 36
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 5,
+	  "comfort": "SLEEPING",
+	  "name": "Спальный вагон",
+	  "maxCapacity": 18
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 6,
+	  "comfort": "COUPE",
+	  "name": "Купированный вагон",
+	  "maxCapacity": 36
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 44,
+	  "comfort": "PLACKART",
+	  "name": "Плацкартный вагон",
+	  "maxCapacity": 54
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 8,
+	  "comfort": "COUPE",
+	  "name": "Купированный вагон",
+	  "maxCapacity": 36
+	}
+  },
+  {
+	"type": "LuggageCar",
+	"properties": {
+	  "numberOfLuggage": 100,
+	  "comfort": "LUGGAGE",
+	  "name": "Багажный вагон",
+	  "maxCapacity": 100
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 46,
+	  "comfort": "PLACKART",
+	  "name": "Плацкартный вагон",
+	  "maxCapacity": 54
+	}
+  },
+  {
+	"type": "LuggageCar",
+	"properties": {
+	  "numberOfLuggage": 11,
+	  "comfort": "LUGGAGE",
+	  "name": "Багажный вагон",
+	  "maxCapacity": 100
+	}
+  }
+]
