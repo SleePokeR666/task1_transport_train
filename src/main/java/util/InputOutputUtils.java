@@ -3,10 +3,9 @@ package util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 /**
  * Utility class for different input and output operations.
@@ -28,9 +27,16 @@ public class InputOutputUtils {
 	 */
 	public static String readFile(String fileName) {
 		StringBuilder result = new StringBuilder();
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-			while (reader.ready()) {
-				result.append(reader.readLine());
+		try (BufferedReader reader = new BufferedReader(
+				new InputStreamReader(
+						new FileInputStream(fileName), StandardCharsets.UTF_8))) {
+			char[] buf = new char[1024];
+			int temp;
+			while ((temp = reader.read(buf)) > 0) {
+				if (temp < buf.length) {
+					buf = Arrays.copyOf(buf, temp);
+				}
+				result.append(buf);
 			}
 		} catch (FileNotFoundException exception) {
 			LOG.error("Файл не найден!", exception);
