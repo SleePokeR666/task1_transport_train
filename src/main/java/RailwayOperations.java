@@ -7,12 +7,9 @@ import entity.LuggageCar;
 import entity.PassengerCar;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import util.InputOutputUtils;
 import util.Randomizer;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +74,7 @@ class RailwayOperations {
 	 * @return {@code List} of {@code AbstractCarriage} objects.
 	 */
 	static List<AbstractCarriage> createTrain(String jsonFileName) {
-		String json = readFile(jsonFileName);
+		String json = InputOutputUtils.readFile(jsonFileName);
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		Type collectionType = new TypeToken<ArrayList<AbstractCarriage>>() {
 		}.getType();
@@ -93,26 +90,6 @@ class RailwayOperations {
 	 */
 	private static boolean hasPassengerLuggage() {
 		return Randomizer.getRandomInt(2) == 1;
-	}
-
-	/**
-	 * Reads the file and returns full containment as {@code String}.
-	 *
-	 * @param fileName full path to file.
-	 * @return {@code String} value with full file containment.
-	 */
-	private static String readFile(String fileName) {
-		StringBuilder result = new StringBuilder();
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-			while (reader.ready()) {
-				result.append(reader.readLine());
-			}
-		} catch (FileNotFoundException exception) {
-			LOG.error("Файл не найден!", exception);
-		} catch (IOException exception) {
-			LOG.error("Ошибка чтения файла!", exception);
-		}
-		return result.toString();
 	}
 
 	/**
