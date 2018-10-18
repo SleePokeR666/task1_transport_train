@@ -1,8 +1,4 @@
-import entity.AbstractCarriage;
-import entity.Comfort;
-import entity.LuggageCar;
-import entity.PassengerCar;
-import org.testng.Assert;
+import entity.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -10,6 +6,8 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
 
 public class RailwayOperationsTest {
 
@@ -36,15 +34,22 @@ public class RailwayOperationsTest {
 	}
 
 	@Test
+	public void createTrainFromJsonTest() {
+		List<AbstractCarriage> tested = RailwayOperations.
+				createTrain("src/test/resources/railway_operations_test.json");
+		assertEquals(tested, train);
+	}
+
+	@Test
 	public void countTotalNumberOfPassengersTest() {
 		int tested = RailwayOperations.countTotalNumberOfPassengers(train);
-		Assert.assertEquals(tested, 135);
+		assertEquals(tested, 135);
 	}
 
 	@Test
 	public void countTotalNumberOfLuggageTest() {
 		int tested = RailwayOperations.countTotalNumberOfLuggage(train);
-		Assert.assertEquals(tested, 110);
+		assertEquals(tested, 110);
 	}
 
 	@Test(dataProvider = "rangeTestData")
@@ -53,7 +58,7 @@ public class RailwayOperationsTest {
 		List<AbstractCarriage> tested = RailwayOperations.
 				findCarsWithPassengersWithinRange(train, min, max);
 
-		Assert.assertEquals(tested, expected);
+		assertEquals(tested, expected);
 	}
 
 	@BeforeMethod

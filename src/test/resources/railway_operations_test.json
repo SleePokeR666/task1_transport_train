@@ -1,0 +1,65 @@
+[
+  {
+	"type": "LuggageCar",
+	"properties": {
+	  "numberOfLuggage": 10,
+	  "comfort": "LUGGAGE",
+	  "name": "Багажный вагон",
+	  "maxCapacity": 100
+	}
+  },
+  {
+	"type": "LuggageCar",
+	"properties": {
+	  "numberOfLuggage": 100,
+	  "comfort": "LUGGAGE",
+	  "name": "Багажный вагон",
+	  "maxCapacity": 100
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 50,
+	  "comfort": "GENERAL",
+	  "name": "Общий вагон",
+	  "maxCapacity": 81
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 20,
+	  "comfort": "PLACKART",
+	  "name": "Плацкартный вагон",
+	  "maxCapacity": 54
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 30,
+	  "comfort": "COUPE",
+	  "name": "Купированный вагон",
+	  "maxCapacity": 36
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 25,
+	  "comfort": "SEATING",
+	  "name": "Сидячий вагон",
+	  "maxCapacity": 62
+	}
+  },
+  {
+	"type": "PassengerCar",
+	"properties": {
+	  "numberOfPassengers": 10,
+	  "comfort": "SLEEPING",
+	  "name": "Спальный вагон",
+	  "maxCapacity": 18
+	}
+  }
+]
