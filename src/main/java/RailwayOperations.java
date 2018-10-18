@@ -12,6 +12,7 @@ import util.Randomizer;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -63,6 +64,8 @@ class RailwayOperations {
 			train.add(passengerCar);
 		}
 		train.add(luggageCar);
+		LOG.info("Поезд успешно создан и готов к отправлению! " +
+				"Количество вагонов: {}.", train.size());
 		return train;
 	}
 
@@ -80,7 +83,22 @@ class RailwayOperations {
 		}.getType();
 		gsonBuilder.registerTypeAdapter(AbstractCarriage.class, new AbstractCarriageAdapter());
 		Gson gson = gsonBuilder.create();
-		return gson.fromJson(json, collectionType);
+		List<AbstractCarriage> train = gson.fromJson(json, collectionType);
+		printTrain(train);
+		LOG.info("Поезд успешно создан и готов к отправлению! " +
+				"Количество вагонов: {}.", train.size());
+		return train;
+	}
+
+	/**
+	 * Method logs current state of the train.
+	 *
+	 * @param train {@code List} of {@code AbstractCarriage} objects.
+	 */
+	private static void printTrain(List<AbstractCarriage> train) {
+		for (AbstractCarriage railwayCarriage : train) {
+			LOG.info(railwayCarriage);
+		}
 	}
 
 	/**
@@ -105,6 +123,7 @@ class RailwayOperations {
 				total += railwayCarriage.getCurrentLoad();
 			}
 		}
+		LOG.info("Общее количество пассижиров поезда: {}.", total);
 		return total;
 	}
 
@@ -121,7 +140,23 @@ class RailwayOperations {
 				total += railwayCarriage.getCurrentLoad();
 			}
 		}
+		LOG.info("Общее количество багажа в поезде: {}.", total);
 		return total;
+	}
+
+	/**
+	 * Sorts the train by natural order of the cars.
+	 *
+	 * @param train {@code List} of different cars.
+	 */
+	static void sortTrainByComfort(List<AbstractCarriage> train) {
+		LOG.info("Поезд до сортировки!\n");
+		printTrain(train);
+
+		Collections.sort(train);
+
+		LOG.info("Поезд после сортировки!\n");
+		printTrain(train);
 	}
 
 	/**
@@ -136,6 +171,8 @@ class RailwayOperations {
 	 */
 	static List<AbstractCarriage>
 	findCarsWithPassengersWithinRange(List<AbstractCarriage> train, int min, int max) {
+		LOG.info("Список вагонов, в которых пассажиров больше {} и меньше {}.\n",
+				min, max);
 		List<AbstractCarriage> result = new ArrayList<>();
 		for (AbstractCarriage railwayCarriage : train) {
 			if (railwayCarriage instanceof PassengerCar) {
@@ -145,6 +182,7 @@ class RailwayOperations {
 				}
 			}
 		}
+		printTrain(result);
 		return result;
 	}
 }
