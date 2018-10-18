@@ -16,6 +16,10 @@ public class InputOutputUtilsTest {
 
 	@Test
 	public void readFileExceptionTest() {
-		InputOutputUtils.readFile("src/test/resources/train_not_test.json");
+		String expected = "";
+
+		String tested = InputOutputUtils.readFile("src/test/resources/train_not_test.json");
+
+		Assert.assertEquals(tested, expected);
 	}
 }
