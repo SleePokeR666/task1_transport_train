@@ -1,4 +1,7 @@
-import entity.*;
+import entity.AbstractCarriage;
+import entity.Comfort;
+import entity.LuggageCar;
+import entity.PassengerCar;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -33,6 +36,40 @@ public class RailwayOperationsTest {
 		return new Object[][]{{data, min, max}};
 	}
 
+	@DataProvider
+	public static Object[][] sortTrainData() {
+		List<AbstractCarriage> data = new ArrayList<>();
+
+		PassengerCar passengerCar = new PassengerCar(Comfort.SLEEPING);
+		passengerCar.setNumberOfPassengers(10);
+		data.add(passengerCar);
+
+		passengerCar = new PassengerCar(Comfort.COUPE);
+		passengerCar.setNumberOfPassengers(30);
+		data.add(passengerCar);
+
+		passengerCar = new PassengerCar(Comfort.PLACKART);
+		passengerCar.setNumberOfPassengers(20);
+		data.add(passengerCar);
+
+		passengerCar = new PassengerCar(Comfort.SEATING);
+		passengerCar.setNumberOfPassengers(25);
+		data.add(passengerCar);
+
+		passengerCar = new PassengerCar(Comfort.GENERAL);
+		passengerCar.setNumberOfPassengers(50);
+		data.add(passengerCar);
+
+		LuggageCar luggageCar = new LuggageCar();
+		luggageCar.setNumberOfLuggage(10);
+		data.add(luggageCar);
+
+		luggageCar = new LuggageCar();
+		luggageCar.setNumberOfLuggage(100);
+		data.add(luggageCar);
+		return new Object[][]{{data}};
+	}
+
 	@Test
 	public void createTrainFromJsonTest() {
 		List<AbstractCarriage> tested = RailwayOperations.
@@ -50,6 +87,12 @@ public class RailwayOperationsTest {
 	public void countTotalNumberOfLuggageTest() {
 		int tested = RailwayOperations.countTotalNumberOfLuggage(train);
 		assertEquals(tested, 110);
+	}
+
+	@Test(dataProvider = "sortTrainData")
+	public void sortTrainByComfortTest(List<AbstractCarriage> expected) {
+		RailwayOperations.sortTrainByComfort(train);
+		assertEquals(train, expected);
 	}
 
 	@Test(dataProvider = "rangeTestData")
